@@ -1,21 +1,18 @@
 const serverless = require('serverless-http');
 const express = require('express');
 const app = express();
-const bodyParser = require('body-parser');
 const uuid = require('uuid/v4');
 
 const dbConnection = require('../dbConfig');
 const ProductService = require('../Services/product');
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-//  base url to test our API
 app.get('/index', async (req, res) => {
    await res.send("<h3>Welcome to the Product API for LogRocket Blog serverless Example!!</h3>")
 })
 
-//  function for creating a new product
 app.post('/', async (req, res) => {
   try {
    await dbConnection();
@@ -32,12 +29,10 @@ app.post('/', async (req, res) => {
     )
    }
   } catch (error) {
-    //  handle errors here
     console.log(error, "error!!");
   }
 })
 
-//  function for getting all products
 app.get('/', async (req, res) => {
 try {
     await dbConnection();
@@ -48,13 +43,10 @@ try {
       })
     }
   } catch (error) {
-     //  handle errors here
      console.log(error, "error!!");
   }
 })
 
-
-//  function for getting a  product by Id
 app.get('/:productId/', async (req, res) => {
   try {
     await dbConnection();
@@ -66,7 +58,6 @@ app.get('/:productId/', async (req, res) => {
       })
     }
   } catch (error) {
-     //  handle errors here
      console.log(error, "error!!");
   }
 });
