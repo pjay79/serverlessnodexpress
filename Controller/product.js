@@ -16,13 +16,13 @@ app.get('/index', async (req, res) => {
 app.post('/', async (req, res) => {
   try {
     await dbConnection();
-    const data  = req.body;
+    const data = req.body;
     const { name, type, description, cost } = data;
     if (!data) {
       return "Please pass all required fields!";
     }
-    const dataToSave = { name, type, description, cost, productId:uuid() };
-    const createProduct =  await ProductService.createProduct(dataToSave);
+    const dataToSave = { name, type, description, cost, productId: uuid() };
+    const createProduct = await ProductService.createProduct(dataToSave);
     if (createProduct) {
       return res.status(200).send(
         createProduct
