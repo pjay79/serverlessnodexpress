@@ -10,47 +10,47 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/index', async (req, res) => {
-   await res.send("<h3>Welcome to the Product API for LogRocket Blog serverless Example!!</h3>")
+   await res.send("<h3>Welcome to the Product API!</h3>")
 })
 
 app.post('/', async (req, res) => {
   try {
-   await dbConnection();
-   const data  = req.body;
-   const {name, type, description, cost} = data;
- if(!data) {
-     return "Please pass all required fields!"
-  }
-   const dataToSave = {name,type,description,cost,productId:uuid()};
-   let createProduct =  await ProductService.createProduct(dataToSave);
-   if (createProduct) {
-     return res.status(200).send(
-       createProduct
-    )
-   }
+    await dbConnection();
+    const data  = req.body;
+    const { name, type, description, cost } = data;
+    if(!data) {
+      return "Please pass all required fields!";
+    }
+    const dataToSave = { name, type, description, cost, productId:uuid() };
+    const createProduct =  await ProductService.createProduct(dataToSave);
+    if (createProduct) {
+      return res.status(200).send(
+        createProduct
+      );
+    }
   } catch (error) {
     console.log(error, "error!!");
   }
 })
 
 app.get('/', async (req, res) => {
-try {
+  try {
     await dbConnection();
     const allProducts = await ProductService.getAllProduct();
     if (allProducts) {
       return res.status(200).send({
         data: allProducts
-      })
+      });
     }
   } catch (error) {
-     console.log(error, "error!!");
+      console.log(error, "error!!");
   }
 })
 
 app.get('/:productId/', async (req, res) => {
   try {
     await dbConnection();
-    const {productId} = req.params;
+    const { productId } = req.params;
     const getProduct = await ProductService.getProductById({productId});
     if(getProduct) {
       return res.status(200).send({
