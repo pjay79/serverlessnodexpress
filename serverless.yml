@@ -11,19 +11,19 @@ functions:
   productAPI:
     handler: Controller/product.handler
     events:
-        - http:
-            path: /index
-            method: get
-        - http:
-            path: /
-            method: post
-        - http:
-            path: /
-            method: get
-        - http:
-            path: /{productId}
-            method: get
-
+      - http:
+          path: /index
+          method: get
+      - http:
+          path: /
+          method: post
+      - http:
+          path: /
+          method: get
+      - http:
+          path: /{productId}
+          method: get
+          
 plugins:
   - serverless-offline
   - serverless-dotenv-plugin
