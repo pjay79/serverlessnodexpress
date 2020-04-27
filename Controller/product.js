@@ -4,7 +4,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const uuid = require('uuid/v4');
 
-const dbConnection = require('../dbConfigs');
+const dbConnection = require('../dbConfig');
 const ProductService = require('../Services/product');
 
 app.use(bodyParser.json());

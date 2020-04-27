@@ -58,7 +58,7 @@ provider:
 
 functions:
   productAPI:
-    handler: Controller/products.handler
+    handler: Controller/product.handler
     events:
         - http:
             path: /index

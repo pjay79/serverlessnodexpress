@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-require("dotenv").config();
 mongoose.Promise = global.Promise;
 
 const connectToDatabase = async () => {
@@ -14,3 +13,5 @@ const connectToDatabase = async () => {
   isConnected = database.connections[0].readyState;
   // return isConnected;
 };
+
+module.exports = connectToDatabase;
