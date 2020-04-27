@@ -18,7 +18,7 @@ app.post('/', async (req, res) => {
     await dbConnection();
     const data  = req.body;
     const { name, type, description, cost } = data;
-    if(!data) {
+    if (!data) {
       return "Please pass all required fields!";
     }
     const dataToSave = { name, type, description, cost, productId:uuid() };
@@ -52,7 +52,7 @@ app.get('/:productId/', async (req, res) => {
     await dbConnection();
     const { productId } = req.params;
     const getProduct = await ProductService.getProductById({productId});
-    if(getProduct) {
+    if (getProduct) {
       return res.status(200).send({
         data: getProduct
       })
