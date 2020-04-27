@@ -1,0 +1,24 @@
+{
+  "name": "serverless-example",
+  "version": "1.0.0",
+  "description": "Serverless Example",
+  "main": "handler.js",
+  "scripts": {
+    "start": "serverless offline start --skipCacheInvalidation",
+    "deploy": "sls deploy -v"
+  },
+  "keywords": [],
+  "author": "Praveen Jayarajan",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless-dotenv-plugin": "^2.4.2",
+    "serverless-offline": "^6.1.4"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.10",
+    "serverless-http": "^2.3.2",
+    "uuid": "^7.0.3"
+  }
+}
