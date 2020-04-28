@@ -1,17 +1,18 @@
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
 
-const connectToDatabase = async () => {
-  let isConnected;
-  if (isConnected) {
-    console.log('using existing database connection');
-    return Promise.resolve();
-  }
+const mongoose = require("mongoose");
 
-  console.log('using new database connection');
-  const database = await mongoose.connect(process.env.MONGODB_URL, {useNewUrlParser: true});
-  isConnected = database.connections[0].readyState;
-  // return isConnected;
-};
+mongoose.connect(process.env.MONGODB_URL, {
+    useNewUrlParser: true,
+});
 
-module.exports = connectToDatabase;
+const db = mongoose.connection;
+
+db.on("error", () => {
+    console.log("> error occurred from the database");
+});
+
+db.once("open", () => {
+    console.log("> successfully opened the database");
+});
+
+module.exports = mongoose;

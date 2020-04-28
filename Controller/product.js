@@ -15,7 +15,6 @@ app.get('/index', async (req, res) => {
 
 app.post('/', async (req, res) => {
   try {
-    await dbConnection();
     const data = req.body;
     const { name, type, description, cost } = data;
     if (!data) {
@@ -35,7 +34,6 @@ app.post('/', async (req, res) => {
 
 app.get('/', async (req, res) => {
   try {
-    await dbConnection();
     const allProducts = await ProductService.getAllProduct();
     if (allProducts) {
       return res.status(200).send({
@@ -49,7 +47,6 @@ app.get('/', async (req, res) => {
 
 app.get('/:productId/', async (req, res) => {
   try {
-    await dbConnection();
     const { productId } = req.params;
     const getProduct = await ProductService.getProductById({productId});
     if (getProduct) {
