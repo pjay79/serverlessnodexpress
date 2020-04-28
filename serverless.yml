@@ -12,17 +12,13 @@ functions:
     handler: Controller/product.handler
     events:
       - http:
-          path: /index
-          method: get
-      - http:
           path: /
-          method: post
+          method: ANY
+          cors: true
       - http:
-          path: /
-          method: get
-      - http:
-          path: /{productId}
-          method: get
+          path: /{proxy+}
+          method: ANY
+          cors: true
           
 plugins:
   - serverless-offline
