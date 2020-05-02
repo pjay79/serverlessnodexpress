@@ -1,7 +1,7 @@
-const serverless = require('./node_modules/serverless-http');
-const express = require('./node_modules/express');
+const serverless = require('serverless-http');
+const express = require('express');
 const app = express();
-const uuid = require('./node_modules/uuid/v4');
+const uuid = require('uuid/v4');
 
 const dbConnection = require('../dbConfig');
 const ProductService = require('../services/product');
