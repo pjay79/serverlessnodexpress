@@ -15,7 +15,7 @@
     "serverless-offline": "^6.1.4"
   },
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "mongoose": "^5.9.10",
     "serverless-http": "^2.3.2",
     "uuid": "^7.0.3"
